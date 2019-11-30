@@ -1,0 +1,342 @@
+
+***** basic program structure*****
+package first;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class test {
+	public static void main(String arg[])
+	{
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe");
+		WebDriver bo=new ChromeDriver();
+	}
+
+}
+
+****gmail creation****
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Test01 {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe");
+		WebDriver bo=new ChromeDriver();
+		WebDriverWait wait=new WebDriverWait(bo,20);
+		bo.get("https://accounts.google.com/");
+		bo.manage().window().maximize();
+		bo.findElement(By.xpath("//input[@id='identifierId']")).sendKeys("gopalsandipeta");
+		bo.findElement(By.xpath("//span[@class='RveJvd snByac']")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.name("password")));
+        
+        bo.findElement(By.name("password")).sendKeys("9177161295");
+	}
+
+}
+**** HRM creation***
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test04 
+{
+
+public static void main(String arg[])
+{
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe" );
+	WebDriver bo=new ChromeDriver();
+	bo.get("http://apps.qaplanet.in/hrm/login.php");
+	bo.manage().window().maximize();
+	bo.findElement(By.xpath("//input[@name='txtUserName']")).sendKeys("qaplanet1");
+	bo.findElement(By.xpath("//input[@name='txtPassword']")).sendKeys("lab1");
+	bo.findElement(By.xpath("")).click();
+	bo.findElement(By.linkText("Logout")).click();
+    if(bo.getTitle().equals("OrangeHRM"))
+	System.out.println("pass");
+    else
+	System.out.println("fail");	
+}
+}
+
+**** by using switch to alert command****
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test05 
+{
+	public static void main(String[] arg)throws Exception
+	
+	{
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe");
+	WebDriver bo=new ChromeDriver();
+	bo.get(" http://apps.qaplanet.in/qahrm/login.php");
+	bo.findElement(By.xpath("//input[@name='txtUserName']")).sendKeys("");
+	bo.findElement(By.xpath(" //input[@name='txtPassword']")).sendKeys(" ");
+	bo.findElement(By.xpath("//input[@name='Submit']")).click();
+	if(bo.switchTo().alert().getText().equals("User Name not given!"))
+		System.out.println("pass");
+	else
+		System.out.println("fail");
+	bo.switchTo().alert().accept();
+	bo.close();
+	
+}
+}
+**** invalid pop up msg displayed****
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test06 {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe");
+		WebDriver bo=new ChromeDriver();
+		bo.get(" http://apps.qaplanet.in/qahrm/login.php");
+		bo.findElement(By.xpath("//input[@name='txtUserName']")).sendKeys("qaplanet1");
+		bo.findElement(By.xpath(" //input[@name='txtPassword']")).sendKeys("helo");
+		bo.findElement(By.xpath("//input[@name='Submit']")).click();
+		if(bo.findElement(By.xpath("//font[contains(text(),'Invalid Login')]")).getText().equals("Invalid Login"))
+			System.out.println("pass");
+		else
+			System.out.println("fail");
+	bo.close();
+	}
+
+}
+**** by using action commands***
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Test07 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe");
+		WebDriver bo=new ChromeDriver();
+		bo.get(" http://apps.qaplanet.in/qahrm/login.php");
+		bo.findElement(By.xpath("//input[@name='txtUserName']")).sendKeys("qaplanet1");
+		bo.findElement(By.xpath(" //input[@name='txtPassword']")).sendKeys("lab1");
+		bo.findElement(By.xpath("//input[@name='Submit']")).click();
+		Actions acs=new Actions(bo);
+		acs.moveToElement(bo.findElement(By.xpath("//span[@class='drop'][contains(text(),'Admin')]"))).perform();
+		Thread.sleep(3000);
+		acs.moveToElement(bo.findElement( By.xpath("//span[contains(text(),'Company Info')]"))).perform();
+		Thread.sleep(5000);
+		acs.moveToElement(bo.findElement(By.xpath("//span[contains(text(),'General')]"))).click();
+		Thread.sleep(5000);
+		
+	}
+
+}
+
+
+**** hrm lagout command****
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test10 
+{
+
+public static void main(String arg[])
+{
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe" );
+	WebDriver bo=new ChromeDriver();
+	bo.get("http://apps.qaplanet.in/hrm/login.php");
+	bo.manage().window().maximize();
+	bo.findElement(By.xpath("//input[@name='txtUserName']")).sendKeys("qaplanet1");
+	bo.findElement(By.xpath("//input[@name='txtPassword']")).sendKeys("lab1");
+	bo.findElement(By.xpath("")).click();
+	bo.findElement(By.linkText("Logout")).click();
+    if(bo.getTitle().equals("OrangeHRM"))
+	System.out.println("pass");
+    else
+	System.out.println("fail");	
+}
+}
+***** BROWSER COMMANDS*****
+package first;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test3 
+{
+	public static void main(String arg[])
+	{
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe");
+		WebDriver bo=new ChromeDriver();
+		bo.get("https://www.redbus.in/");
+		String t=bo.getTitle();
+		System.out.println(t);
+		String u=bo.getCurrentUrl();
+		System.out.println(u);
+		String ps=bo.getPageSource();
+		System.out.println(ps);
+		bo.navigate().forward();
+		bo.get("https://www.redbus.in/rPool/");
+		bo.navigate().refresh();
+		bo.navigate().to("https://www.google.com/");
+		bo.get(bo.getCurrentUrl());
+		bo.navigate().back();
+		bo.quit();
+		bo.close();
+	}
+}
+
+**** WEB ELEMENT COMMANDS****
+package first;
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+	
+
+	public class Test4 
+	{
+		public static void main(String arg[])
+		{
+			System.setProperty("webdriver.gecko.driver","C:\\Users\\QA2-\\Downloads\\Gopal\\geckodriver.exe");
+			WebDriver bo=new FirefoxDriver();
+			bo.get("https://www.redbus.in/");
+			String t=bo.getTitle();
+			System.out.println(t);
+			String u=bo.getCurrentUrl();
+			System.out.println(u);
+			String ps=bo.getPageSource();
+			System.out.println(ps);
+			bo.navigate().forward();
+		 	bo.get("https://www.redbus.in/rPool/");
+		 	bo.navigate().back();
+		    bo.manage().window().maximize();
+		    bo.manage().window();
+			bo.get("https://www.google.com/");
+			bo.close();
+		}
+	}
+
+
+
+****WEB ELEMENT COMMANDS****
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test5 {
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+		System.setProperty("WebDriver.Chrome.Driver","C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe" );
+		WebDriver bo=new ChromeDriver();
+		bo.get("http://apps.qaplanet.in/qahrm/login.php");
+		bo.findElement(By.name("txtUsername")).sendKeys("qaplanet1");
+		bo.findElement(By.name("txtPassword")).sendKeys("lab1");
+		bo.findElement(By.name("submit")).click();
+		bo.manage().window().maximize();
+		
+		bo.findElement(By.linkText("Logout")).click();
+		System.out.println(((WebElement) bo).getAttribute("title"));
+		bo.close();
+
+	}
+
+}
+*****WEB ELEMENT COMMANDS****
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test6 
+{
+			public static void main(String arg[])
+			{
+				System.setProperty("webdriver.chrome.driver", "C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe");
+				WebDriver bo=new ChromeDriver();
+				bo.get("https://www.redbus.in/");
+				String t=bo.getTitle();
+				System.out.println(t);
+				String u=bo.getCurrentUrl();
+				System.out.println(u);
+				String ps=bo.getPageSource();
+				System.out.println(ps);
+				bo.navigate().back();
+				bo.navigate().forward();
+				bo.get("http://apps.qaplanet.in/qahrm/login.php");
+				bo.findElement(By.name("txtUserName")).sendKeys("qaplanet1");
+				bo.findElement(By.name("txtPassword")).sendKeys("lab1");
+			 	bo.findElement(By.name("Submit")).click();
+			 	bo.findElement(By.linkText("logout")).click();
+			 	bo.navigate().back();
+	
+			}
+		}
+
+
+*** WEB ELEMENT COMMANDS***
+package first;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test7
+{
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver","C:\\Users\\QA2-\\Downloads\\Gopal\\chromedriver.exe");
+WebDriver bo=new ChromeDriver();
+bo.get("http://apps.qaplanet.in/hrm/login.php");
+bo.findElement(By.xpath("/html[1]/body[1]/form[1]/table[1]/tbody[1]/tr[1]/td[2]/table[1]/tbody[1]/tr[1]/td[2]/table[1]/tbody[1]/tr[2]/td[2]/input[1]")).sendKeys("qaplanet1");
+bo.findElement(By.xpath("//input[@name='txtPassword']")).sendKeys("lab1");
+bo.findElement(By.xpath("//input[@name='Submit']")).click();
+if(bo.getTitle().equals("OrangeHRM"))
+{
+System.out.println("pass");
+}
+else
+{
+	System.out.println("fail");
+}
+bo.close();
+	}
+
+}
+
+
+
+
