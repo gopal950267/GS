@@ -170,3 +170,55 @@ public class Tes4 {
 	}
 
 }
+
+##### encapsulation prgs####
+package pak1;
+
+public class Enc
+{
+	private String emname;
+	private int emno;
+	private int code;
+	public String getName()
+	{
+		return emname;
+		
+	}
+	public int getNo()
+	{
+		return emno;
+		
+	}
+	public int getCode()
+	{
+	return code;
+	
+	}
+	public void setName(String name)
+	{
+		this.emname=name;
+	}
+   public void setNo(int no)
+   {
+	   this.emno=no;
+   }
+}
+
+
+
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+      Enc a=new Enc();
+      a.setName("gopal");
+      a.setNo(123);
+      String b=a.getName();
+      int c=a.getNo();
+      System.out.println("employer name:"+b);
+      System.out.println("employer no:"+c);
+	}
+
+
+
+
