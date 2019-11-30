@@ -1,0 +1,172 @@
+
+*** Return type and non return Type***
+public class Test 
+{
+	//non-renurn type without parameter+
+ void add()
+ {
+	 int a=10;
+	 int b=20;
+	 int t;
+	 t=a+b;
+	 System.out.println(t);
+ }
+//non-return type with parameter
+ void add(int a,int b,int c)
+ {
+  int t=a+b+c;
+  System.out.println(t);
+ }
+
+//Return type with out  parameter
+int sub()
+{
+	int a=10,b=40;
+	int t=a+b;
+	return t;
+}
+
+//Return type with parameter
+float add(float a, float b)
+{
+float t=a+b;
+return t;
+}
+}
+
+**execution of abouve prg***
+package programs;
+
+public class Test1 {
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+     Test a=new Test();
+     a.add();//Return Type without parameter
+	 a.add(20,30, 40);//non return type with parameter
+	 int s=a.sub();//Return type without parameter
+	 System.out.println(s);//non return type with parameter
+	 float k=a.add(2.5f,3.5f);
+	 System.out.println(k);
+	}
+
+}
+
+#####Abstract class####
+package pack1;
+
+abstract class Abs 
+{
+public abstract  void ok();
+public abstract void suces();
+}
+
+
+
+
+public class Abst extends Abs
+{
+
+	@Override
+	public void ok() {
+		// TODO Auto-generated method stub
+		System.out.println("helo");
+	}
+
+	@Override
+	public void suces() {
+		// TODO Auto-generated method stub
+
+		System.out.println("helo");
+	}
+
+}
+
+
+
+
+package pack1;
+
+public class Abs2 extends Abs
+{
+
+	@Override
+	public void ok() {
+		// TODO Auto-generated method stub
+		System.out.println("helo");
+	}
+
+	@Override
+	public void suces() {
+		// TODO Auto-generated method stub
+		System.out.println("helo");
+	}
+	
+}
+
+
+
+package pack1;
+
+public class Abs1
+{
+	public static void main(String arg[])
+	{
+	Abs2 a=new Abs2();
+	a.ok();
+	a.suces();
+	Abst b=new Abst();
+	a.suces();
+	a.ok();
+	}
+}
+
+##### interface prgs####
+package pack1;
+
+public interface Tes
+{
+void ok();
+void suc();
+	
+}
+
+
+package pack1;
+
+public class Tes1 implements Tes
+{
+public void ok()
+{
+	System.out.println("helo");
+}
+}
+
+
+package pack1;
+
+public class Tes3 implements Tes
+{
+public void suc()
+{
+	System.out.println("helo");
+}
+}
+
+
+
+package pack1;
+
+public class Tes4 {
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+  Tes3 a=new Tes3();
+  a.suc();
+  Tes1 b=new Tes1();
+  b.ok();
+	}
+
+}
