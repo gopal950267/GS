@@ -1,0 +1,4 @@
+Admin = users\admin\ss.ini
+Guest = users\guest\ss.ini
+QAPLANET = users\qaplanet\ss.ini
+Harish = users\harish\ss.ini
